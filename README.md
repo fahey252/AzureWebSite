@@ -2,6 +2,9 @@
 
 Training website deployed to Azure.  <http://fahey.azurewebsites.net>
 
+## Development
+  * Be sure to update the .env file with your development environment variables
+
 ## Deployment
   * Do a Push via git with a remote set to the correct Azure Source Control.
   ```bash

@@ -2,7 +2,7 @@
 
 var express = require('express');
 var router = express.Router();
-var sendGridApiKey = process.env.SENDGRIDAPIKEY;
+var sendGridApiKey = process.env.SendGridApiKey;
 var sendgrid = require('sendgrid')(sendGridApiKey);
 
 /* plain text email body contains text that looks like:
@@ -13,8 +13,6 @@ Evan Sauer
 *Email*
 evansauer1225@gmail.com
 */
-console.log(process.env);
-console.log(sendGridApiKey);
 
 function getEmailAddressInText(text) {
     var emailPattern = /\*?Email\*?\n(.+)\n/, // Find Email line and capture everything on line below
@@ -25,15 +23,34 @@ function getEmailAddressInText(text) {
     return email;
 }
 
+function getCCEmaisl() {
+	var ccEmailsSetting = process.env.SendGridCCEmails || '',	// comma separated list.
+    	ccEmails = ccEmailsSetting.split(','),	// [""] when no value set.
+
+    ccEmails = ccEmails.reduce(function sanitizeEmaisl(accumulator, ccEmail) {
+    	if(ccEmail) {	// TODO: perhaps validate is email address, not just truthy
+    		accumulator.push(ccEmail);
+    	}
+
+    	return accumulator;
+    }, []);
+
+    return ccEmails;
+}
+
 function sendWelcomeMessageToEmail(email) {
-    var email = new sendgrid.Email({
-        from: 'fahey252@gmail.com',  // TODO: from email might be spammed, mailed-by:	sendgrid.net
-        cc: process.env.SendGridUserName || '',	// comma separated list.
-        to: email,
-        subject: 'Welcome Subject',
-        text: 'Welcome Email Body.',
-        html: 'Welcome Email <b>Body</b>.'
-    });
+    var ccEmails = getCCEmails(),
+    	email = new sendgrid.Email({
+	        from: 'fahey252@gmail.com',  // TODO: from email might be spammed, mailed-by:	sendgrid.net
+	        to: email,
+	        subject: 'Welcome Subject',
+	        text: 'Welcome Email Body.',
+	        html: 'Welcome Email <b>Body</b>.'
+	    });
+
+    if (ccEmails.length) {
+    	email.cc = ccEmails;
+    }
 
     sendgrid.send(email, function(err, json) {
         if (err) {
