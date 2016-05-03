@@ -3,7 +3,11 @@
 Training website deployed to Azure.  <http://fahey.azurewebsites.net>
 
 ## Development
-  * Be sure to update the .env file with your development environment variables
+  * Will need to create a .env file in the project root directory with the following contents to run locally (for the donenv npm module).
+  ```
+  SendGridApiKey='Your_SendGrid_API_Key'
+  SendGridCCEmails='List_Of_Email_Addresses'
+  ```
 
 ## Deployment
   * Do a Push via git with a remote set to the correct Azure Source Control.

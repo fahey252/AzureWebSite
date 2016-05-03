@@ -23,7 +23,7 @@ function getEmailAddressInText(text) {
     return email;
 }
 
-function getCCEmaisl() {
+function getCCEmails() {
 	var ccEmailsSetting = process.env.SendGridCCEmails || '',	// comma separated list.
     	ccEmails = ccEmailsSetting.split(','),	// [""] when no value set.
 
@@ -38,11 +38,11 @@ function getCCEmaisl() {
     return ccEmails;
 }
 
-function sendWelcomeMessageToEmail(email) {
+function sendWelcomeMessageToEmail(emailAddress) {
     var ccEmails = getCCEmails(),
     	email = new sendgrid.Email({
-	        from: 'fahey252@gmail.com',  // TODO: from email might be spammed, mailed-by:	sendgrid.net
-	        to: email,
+	        from: 'cfahey@cardinalsolutions.com',  // TODO: from email might be spammed, mailed-by:	sendgrid.net
+	        to: emailAddress,
 	        subject: 'Welcome Subject',
 	        text: 'Welcome Email Body.',
 	        html: 'Welcome Email <b>Body</b>.'
@@ -57,7 +57,7 @@ function sendWelcomeMessageToEmail(email) {
             return console.error(err); 
         }
 
-        console.log('Welcome email sent to ' + email, json);
+        console.log('Welcome email sent. ', email);
     });
 }
 
