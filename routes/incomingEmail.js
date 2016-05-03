@@ -2,10 +2,8 @@
 
 var express = require('express');
 var router = express.Router();
-// TODO: add in app settings
-var sendGridUsername = process.env.SendGridUserName;
-var sendGridPassword = process.env.SendGridPassword;		// TODO: use API key once validated it works.
-var sendgrid = require('sendgrid')(sendGridUsername, sendGridPassword);
+var sendGridApiKey = process.env.SENDGRIDAPIKEY;
+var sendgrid = require('sendgrid')(sendGridApiKey);
 
 /* plain text email body contains text that looks like:
 
@@ -15,6 +13,9 @@ Evan Sauer
 *Email*
 evansauer1225@gmail.com
 */
+console.log(process.env);
+console.log(sendGridApiKey);
+
 function getEmailAddressInText(text) {
     var emailPattern = /\*?Email\*?\n(.+)\n/, // Find Email line and capture everything on line below
         emails = text.match(emailPattern), // null when no matches
