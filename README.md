@@ -19,7 +19,8 @@ Training website deployed to Azure.  <http://fahey.azurewebsites.net>
 
 # Resources
   * [Google Web Starter Kit](https://developers.google.com/web/tools/starter-kit/?hl=en)
+  * [SendGrid](https://sendgrid.com) - Created via the Azure Portal
 
 ##Links
-  * <http://fahey.azurewebsites.net>
+  * <https://fahey.azurewebsites.net>
   * <https://github.com/fahey252/AzureWebSite.git>
