@@ -1,70 +1,25 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var config = require('dotenv').config();
+// http://www.tutorialspoint.com/nodejs/nodejs_restful_api.htm
 
-var routes = require('./routes/index');
-var users = require('./routes/user');
-var incomingEmail = require('./routes/incomingEmail');
+var express = require('express'),
+    requestPromise = require('request-promise'),
+    bodyParser = require('body-parser'),
+    port = process.env.port || 3000,
+    app = express();
 
-var app = express();
-
-console.log('Environment variables: ', process.env);
-
-var env = process.env.NODE_ENV || 'development';
-app.locals.ENV = env;
-app.locals.ENV_DEVELOPMENT = env === 'development';
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
-// app.use(favicon(__dirname + '/public/img/favicon.ico'));
-app.use(logger('dev'));
-app.use(bodyParser.json());
+app.use(express.static('app'));
 app.use(bodyParser.urlencoded({
-  extended: true
+    extended: true
 }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json());
 
-app.use('/', routes);
-app.use('/users', users);
-app.use('/incomingEmail', incomingEmail);
-
-/// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+app.get('/home', function(request, response) {
+    response.json('fahey');
 });
 
-/// error handlers
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err,
-            title: 'error'
-        });
-    });
-}
 
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {},
-        title: 'error'
-    });
+var server = app.listen(port, function() {
+    var host = server.address().address,
+        port = server.address().port;
+
+    console.log('App running at //%s:%s', host, port);
 });
-
-module.exports = app;

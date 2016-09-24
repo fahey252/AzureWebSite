@@ -37,3 +37,6 @@ public/components
 
 # Development Files
 .env
+
+# local project database. i.e. MongoDB's $ mongod --dbpath=local-database
+local-database
