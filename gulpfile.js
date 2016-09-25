@@ -36,7 +36,7 @@ gulp.task('serve', ['lint'], () => {
   gulp.watch(['app/images/**/*'], reload);
 });
 
-gulp.task('develop', ['serve'], function () {
+gulp.task('develop', function () {
 	livereload.listen();
 	nodemon({
 		script: 'app.js',
