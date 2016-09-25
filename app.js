@@ -5,9 +5,7 @@ var express = require('express'),
 	bodyParser = require('body-parser'),
 	configs = require('dotenv').config(), // loads process.env from .env file
 	port = process.env.port || 3000,
-	app = express(),
-	emails = require('./library/emails'),
-	database = require('./library/documentDBMongoDB');
+	app = express();
 
 app.use(express.static('app'));
 app.use(bodyParser.urlencoded({
@@ -15,36 +13,8 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-// emails: SendGrid
-app.post('/email/send', function (req, res) {
-	var emailBody = req.body.plain || '', // using plain text version of email
-		email = emails.getEmailAddressInText(emailBody) || 'fahey252@gmail.com'; // TODO: handle case when no email found
-
-	emails.sendWelcomeMessageToEmail('fahey252@gmail.com'); // testing purposese only, fire and forget
-
-	res.send('Email endpoint hit.');
-});
-
-// database: MongoDB
-app.get('/items', function (req, res) {
-	database.getItems().then(function (items) {
-		res.send(items);
-	});
-});
-
-app.post('/items/add', function (req, res) {
-	database.addItem(req.body).then(function (item) {
-		res.send(item);
-	});
-});
-
-app.delete('/items/delete/:id', function (req, res) {
-	var id = req.params.id;
-
-	database.deleteItemById(id).then(function (data) {
-		res.send(data);
-	});
-});
+app.use(require('./library/sendgrid/routes'))
+app.use(require('./library/mongodb/routes'))
 
 var server = app.listen(port, function () {
 	var host = server.address().address,
