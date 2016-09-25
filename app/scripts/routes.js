@@ -1,7 +1,7 @@
 window.angular.module('Fahey').config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 	'use strict';
 
-	$urlRouterProvider.otherwise('/wizard');
+	$urlRouterProvider.otherwise('/home');
 
 	$stateProvider
 		.state('home', {
