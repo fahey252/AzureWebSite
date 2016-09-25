@@ -20,7 +20,7 @@ window.angular.module('Fahey').service('MiddlewareService', ['$http', function (
 	};
 
 	service.deleteItemById = function (id) {
-		var endpoint = '/items/delete/' + id
+		var endpoint = '/items/delete/' + id;
 
 		return $http.delete(endpoint);
 	};

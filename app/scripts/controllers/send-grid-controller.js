@@ -2,8 +2,7 @@ window.angular.module('Fahey').controller('SendGridController', ['$scope', 'Midd
 
 	function sendEmail() {
 		// TODO: show spinners
-		MiddlewareService.sendEmail().then(function (response) {
-		}).catch(function () {
+		MiddlewareService.sendEmail().catch(function () {
 			// TODO: handle errors
 		});
 	}
