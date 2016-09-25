@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="" ng-app="Fahey">
+<html lang="">
 
 <head>
     <meta charset="utf-8">
@@ -39,31 +39,35 @@
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.indigo-pink.min.css">
     <!-- Material Design icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!-- Your styles -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/wizard.css">
 </head>
 
-<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base" ng-app="Fahey">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <ng-include src="'./views/header.html'"></ng-include>
+        <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary" ng-include="'./views/header.html'">
+        </header>
         <main class="mdl-layout__content">
             <div ui-view class="mdl-layout__tab-panel is-active" id="overview">
             </div>
-            <ng-include src="'./views/footer.html'"></ng-include>
+            <footer class="mdl-mega-footer" ng-include="'./views/footer.html'"></footer>
         </main>
     </div>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-animate.min.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/routes.js"></script>
     <script src="scripts/services/middleware.js"></script>
     <script src="scripts/controllers/send-grid-controller.js"></script>
     <script src="scripts/controllers/mongodb-controller.js"></script>
-    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script>
+    <script src="scripts/controllers/wizard-controller.js"></script>
+    <!-- <script src="https://storage.googleapis.com/code.getmdl.io/1.0.6/material.min.js"></script> -->
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
-
     <script src="scripts/google-analytics.js"></script>
     <!-- Built with love using Web Starter Kit -->
 </body>

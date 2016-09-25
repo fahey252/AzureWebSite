@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <div id="form-container">
+            <div class="page-header text-center">
+                <h2>Multi Step Form Example</h2>
+                <!-- add the active class if the state matches our ui-sref -->
+                <div id="status-buttons" class="text-center">
+                    <a ui-sref-active="active" ui-sref=".step1"><span>Step 1</span></a>
+                    <a ui-sref-active="active" ui-sref=".step2"><span>Step 2</span></a>
+                    <a ui-sref-active="active" ui-sref=".step3"><span>Step 3</span></a>
+                </div>
+            </div>
+            <form id="signup-form" ng-submit="processForm()">
+                <!-- our nested state views will be injected here -->
+                <div id="form-views" ui-view></div>
+            </form>
+        </div>
+        <h2>Form Data</h2>
+        <pre>
+{{ formData }}
+</pre>
+    <div>
+      Tutorial From: <a href="https://scotch.io/tutorials/angularjs-multi-step-form-using-ui-router">https://scotch.io/tutorials/angularjs-multi-step-form-using-ui-router</a>
+    </div>
+    </div>
+</div>

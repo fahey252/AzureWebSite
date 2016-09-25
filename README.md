@@ -12,14 +12,16 @@ Training website deployed to Azure.  <http://fahey.azurewebsites.net>
 
 ## Deployment
   * Do a push via Git with a remote set to the correct Azure Source Control.
+  * Deployment source is setup to look for pushes to master branch in GitHub repo.
 
   ```bash
-  $ git push azure master
+  $ git push
   ```
 
 # Resources
   * [Google Web Starter Kit](https://developers.google.com/web/tools/starter-kit/?hl=en)
   * [SendGrid](https://sendgrid.com) - Created via the Azure Portal
+  * [Multi Step Form/Wizard](https://scotch.io/tutorials/angularjs-multi-step-form-using-ui-router)
 
 ##Links
   * <https://fahey.azurewebsites.net>
