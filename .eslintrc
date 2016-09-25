@@ -19,7 +19,7 @@
         ],
         "no-console": 0,
         "no-mixed-spaces-and-tabs": 0,
-        "no-warning-comments":  2
+        "no-warning-comments":  1
     },
     "env": {
         "browser": true,

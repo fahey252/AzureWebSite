@@ -4,8 +4,6 @@ window.angular.module('Fahey').controller('MongoDBController', ['$scope', 'Middl
 	function getItems() {
 		MiddlewareService.getItems().success(function (items) {
 			$scope.items = items;
-		}).catch(function () {
-			// TODO: handle errors
 		});
 	}
 
@@ -14,23 +12,18 @@ window.angular.module('Fahey').controller('MongoDBController', ['$scope', 'Middl
 	}
 
 	function addItem() {
-		// TODO: show spinners
 		var item = {
 			title: new Date().toLocaleTimeString()
 		};
 
 		MiddlewareService.addItem(item).success(function () {
 			refreshItems();
-		}).catch(function () {
-			// TODO: handle errors
 		});
 	}
 
 	function deleteItemById(id) {
 		MiddlewareService.deleteItemById(id).success(function () {
 			refreshItems();
-		}).catch(function () {
-			// TODO: handle errors
 		});
 	}
 
