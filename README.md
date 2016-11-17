@@ -18,6 +18,9 @@ Training website deployed to Azure.  <http://fahey.azurewebsites.net>
   $ git push
   ```
 
+## Dependencies
+  * Globals: `yo` and `generator-swaggerize`. Install with `sudo npm install -g <package name>`
+
 # Resources
   * [Google Web Starter Kit](https://developers.google.com/web/tools/starter-kit/?hl=en)
   * [SendGrid](https://sendgrid.com) - Created via the Azure Portal
