@@ -22,7 +22,7 @@ gulp.task('nodemon', (cb) => {
 	var started = false;
 
 	return $.nodemon({
-		script: 'app.js',
+		script: 'server.js',
 		ignore: ['app/']	// dont reload server for client side change
 	}).on('start', () => {
 		if (!started) {
