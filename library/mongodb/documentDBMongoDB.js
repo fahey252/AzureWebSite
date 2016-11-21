@@ -21,7 +21,7 @@ var addItem = function (db, item, callback) {
 	var collection = db.collection(collectionName);
 
 	collection.insertMany([item], function (err, result) {
-		console.log("Inserted items into the collection.");
+		console.log('Inserted items into the collection.');
 		callback(result);
 	});
 };
@@ -33,7 +33,7 @@ var removeDocumentById = function (db, id, callback) {
 		};
 
 	collection.deleteOne(payload, function (err, result) {
-		console.log("Removed an item from the collection.");
+		console.log('Removed an item from the collection.');
 		callback(result);
 	});
 };
@@ -50,7 +50,6 @@ database.getItems = function () {
 			});
 		});
 	});
-
 };
 
 database.addItem = function (item) {

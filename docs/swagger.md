@@ -8,6 +8,7 @@
   * [API Management](https://docs.microsoft.com/en-us/azure/api-management/api-management-get-started)
   * <http://localhost:8000/contacts>, <http://localhost:8000/swagger>, <http://localhost:8000/docs>
   * [Azure Site With API](http://fahey-api-app.azurewebsites.net/swagger)
+  * [Swagger Editor](http://editor.swagger.io/#/)
 
 # Steps
   * Generate swagger.json definition and add to project.

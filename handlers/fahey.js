@@ -1,17 +1,17 @@
 'use strict';
-var dataProvider = require('../../data/contacts/{id}.js');
+var dataProvider = require('../data/fahey.js');
 /**
- * Operations on /contacts/{id}
+ * Operations on /fahey
  */
 module.exports = {
     /**
      * summary: 
      * description: 
-     * parameters: id
+     * parameters: 
      * produces: application/json, text/json
      * responses: 200
      */
-    get: function contacts_getById(req, res, next) {
+    get: function fahey_get(req, res, next) {
         /**
          * Get the data for response 200
          * For response `default` status 200 is used.

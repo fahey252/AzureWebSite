@@ -1,10 +1,15 @@
 {
     "swagger": "2.0",
+    "host": "localhost:7000",
     "info": {
         "version": "v1",
-        "title": "Contact List",
+        "title": "Contact List API",
         "description": "A Contact list API based on Swagger and built using Node.js"
     },
+    "schemes": [
+        "http",
+        "https"
+    ],
     "paths": {
         "/contacts": {
             "get": {
@@ -50,6 +55,31 @@
                         "type": "integer",
                         "format": "int32"
                     }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Contact"
+                            }
+                        }
+                    }
+                },
+                "deprecated": false
+            }
+        },
+        "/fahey": {
+            "get": {
+                "tags": [
+                    "Fahey"
+                ],
+                "operationId": "fahey_get",
+                "consumes": [],
+                "produces": [
+                    "application/json",
+                    "text/json"
                 ],
                 "responses": {
                     "200": {
