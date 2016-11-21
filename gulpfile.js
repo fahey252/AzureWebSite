@@ -4,16 +4,18 @@ var gulp = require('gulp'),
 	$ = gulpLoadPlugins();
 
 gulp.task('lint', () =>
-	gulp.src('app/scripts/**/*.js')
-	.pipe($.eslint())
-	.pipe($.eslint.format())
-	.pipe($.if(!browserSync.active, $.eslint.failOnError()))
+	gulp.src(['**/*.js', '!node_modules/**', '!app/scripts/third-party/**'])
+		.pipe($.eslint({
+			fix: true
+		}))
+		.pipe($.eslint.format())
+		.pipe($.if(!browserSync.active, $.eslint.failOnError()))
 );
 
 gulp.task('browser-sync', ['nodemon'], () => {
 	browserSync.init(null, {
-		proxy: "http://localhost:3000", // port node server is running on. May need updated
-		files: ["app/**/*.*"],
+		proxy: 'http://localhost:3000', // port node server is running on. May need updated
+		files: ['app/**/*.*'],
 		port: 7000
 	});
 });
@@ -35,9 +37,9 @@ gulp.task('nodemon', (cb) => {
 gulp.task('watch', () => {
 	// gulp.watch(['app/**/*.html'], do-task);
 	// gulp.watch(['app/styles/**/*.{scss,css}'], do-task);
-	gulp.watch(['app/scripts/**/*.js'], ['lint']);
+	gulp.watch(['**/*.js', '!node_modules/**', '!app/scripts/third-party/**'], ['lint']);
 	// gulp.watch(['app/images/**/*'], do-task);
 });
 
-gulp.task('develop', ['browser-sync', 'watch'], () => {});
-gulp.task('default', ['develop'], () => {});
+gulp.task('develop', ['browser-sync', 'watch'], () => { });
+gulp.task('default', ['develop'], () => { });

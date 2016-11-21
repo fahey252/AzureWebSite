@@ -1,7 +1,7 @@
 // Based on: http://mongodb.github.io/node-mongodb-native/2.2/quick-start
 
-var mongodb = require('mongodb')
-MongoClient = mongodb.MongoClient,
+var mongodb = require('mongodb'),
+	MongoClient = mongodb.MongoClient,
 	assert = require('assert'),
 	Promise = require('promise'),
 	dbEndpoint = process.env.DB_ENDPOINT,
@@ -36,7 +36,7 @@ var removeDocumentById = function (db, id, callback) {
 		console.log("Removed an item from the collection.");
 		callback(result);
 	});
-}
+};
 
 database.getItems = function () {
 	return new Promise(function (fulfill, reject) {
